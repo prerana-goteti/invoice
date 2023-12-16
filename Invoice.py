@@ -96,6 +96,16 @@ class InvoiceApp:
         self.customer_email_entry = tk.Entry(root)
         self.customer_email_entry.grid(row=1, column=1, padx=10, pady=10)
 
+        tk.Button(root, text="Add Customer", command=None).grid(row=2, column=0, columnspan=2, pady=10)
+
+        tk.Label(root, text="Product Name : ").grid(row=3, column=0, padx=10, pady=10)
+        self.product_name_entry = tk.Entry(root)
+        self.product_name_entry.grid(row=3, column=1, padx=10, pady=10)
+
+        tk.Label(root, text="Product Price : ").grid(row=4, column=0, padx=10, pady=10)
+        self.product_price_entry = tk.Entry(root)
+        self.product_price_entry.grid(row=4, column=1, padx=10, pady=10)
+
         tk.Button(root, text="Add Product", command=self.add_product).grid(row=5, column=0, columnspan=2, pady=10)
 
         tk.Label(root, text="Invoice Date : ").grid(row=6, column=0, padx=10, pady=10)
@@ -106,7 +116,17 @@ class InvoiceApp:
         self.inv_items_entry = tk.Entry(root)
         self.inv_items_entry.grid(row=8, column=1, padx=10, pady=10)
 
-        tk.Button(root, text="Create Invoice", command=self.create_invoice).grid(row=9, column=0, columnspan=2, pady=10)
+        tk.Button(root, text="Create Invoice", command=None).grid(row=9, column=0, columnspan=2, pady=10)
+
+        def add_product(self):
+            name = self.product_name_entry.get()
+            price = self.product_price_entry.get()
+
+            if name and price:
+                add_product(name, float(price))
+                messagebox.showinfo("Success", "Product Added Successfully.")
+            else:
+                messagebox.showerror("Error", "Please Enter Both Product and it's Price.")
 
 if __name__ == '__main__':
     root = tk.Tk()
